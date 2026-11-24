@@ -34,7 +34,7 @@ if ($requestedPage === false) {
     exit('Номер страницы должен быть положительным целым числом.');
 }
 
-$perPage = 3;
+$perPage = 4;
 $where = '';
 $countParams = [];
 if ($q !== '') {
@@ -109,7 +109,8 @@ function pageUrl(int $number, string $q, string $sort): string {
 
 <?php if ($totalPages > 1): ?>
     <nav aria-label="Страницы новостей">
-        <?php if ($page > 1): ?>
+       <?php if ($page > 1): ?>
+            <a href="<?= e(pageUrl(1, $q, $sort)) ?>">В начало</a>
             <a href="<?= e(pageUrl($page - 1, $q, $sort)) ?>">← Назад</a>
         <?php endif; ?>
         <?php if ($page < $totalPages): ?>
